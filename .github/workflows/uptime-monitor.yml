@@ -1,0 +1,30 @@
+name: Playwright Uptime Kuma Monitor
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Cloner le code
+        uses: actions/checkout@v4
+
+      - name: 2. Configurer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 3. Installer les dépendances
+        run: npm install
+
+      - name: 4. Installer Chromium pour Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: 5. Exécuter le test & Pinger Kuma
+        env:
+          UPTIME_KUMA_URL: ${{ secrets.UPTIME_KUMA_URL }}
+        run: node monitor.js
