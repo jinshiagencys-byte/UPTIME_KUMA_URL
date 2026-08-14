@@ -16,7 +16,7 @@ const { chromium } = require('playwright');
     console.log("🚀 Lancement du test Playwright...");
 
     // 1. Mets ici l'URL de la page ou du site que tu veux tester
-    await page.goto('https://example.com', { waitUntil: 'networkidle' });
+    await page.goto('https://adorable-bonbon-d2a467.netlify.app/', { waitUntil: 'networkidle' });
 
     // 2. Exemple de vérification (ex: présence d'un titre ou bouton)
     await page.waitForSelector('h1', { timeout: 10000 });
