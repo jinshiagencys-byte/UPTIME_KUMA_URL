@@ -70,9 +70,9 @@ async def run_pipeline():
 
     try:
         response = client.chat.completions.create(
-            model="openrouter/free", # Utilise automatiquement le meilleur modèle gratuit dispo
+            model="stealth/space-bunny-alpha", # Utilise automatiquement le meilleur modèle gratuit dispo
             messages=[
-                {"role": "system", "content": "Tu es un expert QA technique qui génère exclusivement du JSON valide."},
+                {"role": "system", "content": "Tu es un expert QA technique qui génère exclusivement du JSON valide"},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.2
